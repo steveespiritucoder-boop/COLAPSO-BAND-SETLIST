@@ -1,0 +1,8 @@
+{
+  "name": "COLAPSO - Setlist Interactivo en Vivo",
+  "description": "Votación interactiva en tiempo real para el concierto de la banda COLAPSO con barras visuales tema a tema y setlist colaborativo.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
