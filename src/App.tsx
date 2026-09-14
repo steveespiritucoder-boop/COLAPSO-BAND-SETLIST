@@ -8,7 +8,7 @@ import { AdminPanel } from './components/AdminPanel';
 import { AdminLogin } from './components/AdminLogin';
 import { CelebrationModal } from './components/CelebrationModal';
 import { ShareModal } from './components/ShareModal';
-import { Volume2, Lock, ShieldCheck, LogOut } from 'lucide-react';
+import { Volume2, ShieldCheck, LogOut } from 'lucide-react';
 
 export default function App() {
   const {
@@ -28,20 +28,45 @@ export default function App() {
   });
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
-  // Check URL query parameter ?view=admin or hash
+  // Check URL pathname (/admin), query (?view=admin), or hash (#admin)
   useEffect(() => {
+    const handleLocation = () => {
+      if (typeof window !== 'undefined') {
+        const path = window.location.pathname.toLowerCase();
+        const urlParams = new URLSearchParams(window.location.search);
+        if (
+          path === '/admin' ||
+          path === '/admin/' ||
+          urlParams.get('view') === 'admin' ||
+          window.location.hash === '#admin'
+        ) {
+          setActiveView('admin');
+        } else {
+          setActiveView('fan');
+        }
+      }
+    };
+
+    handleLocation();
+    window.addEventListener('popstate', handleLocation);
+    return () => window.removeEventListener('popstate', handleLocation);
+  }, []);
+
+  const navigateTo = (view: 'fan' | 'admin') => {
+    setActiveView(view);
     if (typeof window !== 'undefined') {
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get('view') === 'admin' || window.location.hash === '#admin') {
-        setActiveView('admin');
+      if (view === 'admin') {
+        window.history.pushState(null, '', '/admin');
+      } else {
+        window.history.pushState(null, '', '/');
       }
     }
-  }, []);
+  };
 
   const handleAdminLogout = () => {
     sessionStorage.removeItem('colapso_admin_auth');
     setIsAdminAuthenticated(false);
-    setActiveView('fan');
+    navigateTo('fan');
   };
 
   const songs = state?.songs || [];
@@ -78,14 +103,14 @@ export default function App() {
 
   if (!state) {
     return (
-      <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col items-center justify-center p-4">
-        <div className="w-14 h-14 rounded-2xl bg-emerald-100 border border-emerald-300 flex items-center justify-center mb-4 shadow-sm animate-pulse">
-          <Volume2 className="w-7 h-7 text-emerald-700" />
+      <div className="min-h-screen bg-stone-950 text-stone-100 flex flex-col items-center justify-center p-4">
+        <div className="w-14 h-14 rounded-2xl bg-red-950 border border-red-800 flex items-center justify-center mb-4 shadow-lg shadow-red-950/50 animate-pulse">
+          <Volume2 className="w-7 h-7 text-red-400" />
         </div>
-        <h1 className="text-3xl font-black font-rock text-slate-950 tracking-widest uppercase">
+        <h1 className="text-3xl font-black font-rock text-white tracking-widest uppercase">
           COLAPSO
         </h1>
-        <p className="text-xs text-slate-500 mt-2 font-medium">
+        <p className="text-xs text-stone-400 mt-2 font-medium">
           Conectando con el escenario del show en directo...
         </p>
       </div>
@@ -93,13 +118,13 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-900 flex flex-col selection:bg-emerald-600 selection:text-white">
+    <div className="min-h-screen bg-stone-950 text-stone-100 flex flex-col selection:bg-red-600 selection:text-white">
       {/* Global Live Header with Socials & Streams & Share Modal */}
       <Header
         state={state}
         isConnected={isConnected}
         activeView={activeView}
-        onViewChange={(view) => setActiveView(view === 'admin' ? 'admin' : 'fan')}
+        onViewChange={(view) => navigateTo(view === 'admin' ? 'admin' : 'fan')}
         onOpenShareModal={() => setIsShareModalOpen(true)}
       />
 
@@ -139,15 +164,15 @@ export default function App() {
         {activeView === 'admin' && (
           isAdminAuthenticated ? (
             <div className="space-y-4">
-              <div className="flex items-center justify-between p-3 rounded-2xl bg-amber-50 border border-amber-200">
-                <span className="text-xs font-bold text-amber-900 flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                  Sesión de Administración Activa (Banda COLAPSO)
+              <div className="flex items-center justify-between p-3 rounded-2xl bg-stone-900/90 border border-stone-800 shadow-md">
+                <span className="text-xs font-bold text-red-300 flex items-center gap-1.5 font-rock tracking-wider">
+                  <ShieldCheck className="w-4 h-4 text-red-500" />
+                  SESIÓN DE ADMINISTRACIÓN ACTIVA (BANDA COLAPSO)
                 </span>
                 <button
                   type="button"
                   onClick={handleAdminLogout}
-                  className="px-3 py-1 rounded-xl bg-white hover:bg-red-50 text-red-700 hover:text-red-800 border border-slate-300 text-xs font-bold flex items-center gap-1 transition-colors cursor-pointer"
+                  className="px-3 py-1 rounded-xl bg-stone-950 hover:bg-red-950 text-stone-300 hover:text-red-300 border border-stone-800 text-xs font-bold flex items-center gap-1 transition-colors cursor-pointer"
                 >
                   <LogOut className="w-3.5 h-3.5" />
                   <span>Cerrar Sesión</span>
@@ -163,7 +188,7 @@ export default function App() {
           ) : (
             <AdminLogin
               onSuccess={() => setIsAdminAuthenticated(true)}
-              onCancel={() => setActiveView('fan')}
+              onCancel={() => navigateTo('fan')}
             />
           )
         )}
@@ -182,32 +207,24 @@ export default function App() {
         bandName={state.bandName || 'COLAPSO'}
       />
 
-      {/* Light Theme Footer */}
-      <footer className="border-t border-slate-200 bg-white py-5 text-center text-xs text-slate-500 mt-8">
+      {/* Rock Theme Footer */}
+      <footer className="border-t border-stone-800 bg-stone-950 py-5 text-center text-xs text-stone-400 mt-8">
         <div className="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="text-left">
-            <p className="font-rock text-slate-900 text-sm tracking-wider uppercase m-0">
+            <p className="font-rock text-white text-sm tracking-wider uppercase m-0">
               BANDA COLAPSO • SHOW EN VIVO
             </p>
-            <p className="text-[11px] text-slate-500 mt-0.5">
+            <p className="text-[11px] text-stone-400 mt-0.5">
               Setlist Interactivo en Tiempo Real para el Público
             </p>
           </div>
 
           <div className="flex items-center gap-2">
-            {activeView === 'fan' ? (
+            {activeView === 'admin' && (
               <button
-                onClick={() => setActiveView('admin')}
-                className="text-xs font-bold text-slate-400 hover:text-slate-700 flex items-center gap-1 p-1.5 rounded-lg hover:bg-slate-100 transition-colors"
-                title="Acceso restringido para el staff de la banda"
-              >
-                <Lock className="w-3.5 h-3.5 text-slate-400" />
-                <span>Acceso Banda</span>
-              </button>
-            ) : (
-              <button
-                onClick={() => setActiveView('fan')}
-                className="text-xs font-bold text-emerald-700 hover:text-emerald-800 flex items-center gap-1 p-1.5 rounded-lg hover:bg-emerald-50 transition-colors"
+                type="button"
+                onClick={() => navigateTo('fan')}
+                className="text-xs font-bold text-red-400 hover:text-red-300 flex items-center gap-1 p-1.5 rounded-lg hover:bg-stone-900 transition-colors font-rock uppercase tracking-wider cursor-pointer"
               >
                 <ShieldCheck className="w-3.5 h-3.5" />
                 <span>Volver a Vista del Público</span>

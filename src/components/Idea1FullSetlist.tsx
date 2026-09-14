@@ -188,7 +188,6 @@ export const Idea1FullSetlist: React.FC<Idea1FullSetlistProps> = ({
                         )}
                       </div>
                       <p className="text-xs text-zinc-400 truncate">
-                        {item.song.albumOrYear} •{' '}
                         <span className="text-zinc-500">{item.explanation}</span>
                       </p>
                     </div>
@@ -288,7 +287,7 @@ export const Idea1FullSetlist: React.FC<Idea1FullSetlistProps> = ({
                   </div>
                   <div className="min-w-0">
                     <p className="text-sm font-bold text-white truncate">{song.title}</p>
-                    <p className="text-xs text-zinc-400">{song.albumOrYear}</p>
+                    <p className="text-xs text-zinc-400">{song.artist}</p>
                   </div>
                 </div>
 

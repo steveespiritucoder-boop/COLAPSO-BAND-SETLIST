@@ -1,0 +1,330 @@
+{
+  "socialLinks": {
+    "whatsapp": "https://wa.me/51915189153",
+    "phone": "915189153",
+    "instagram": "https://instagram.com/ColapsoBandaRock",
+    "spotify": "https://open.spotify.com/artist/colapso",
+    "tiktok": "https://tiktok.com/@ColapsoBandaRock",
+    "facebook": "https://facebook.com/ColapsoBandaRock",
+    "youtube": "https://youtube.com/@ColapsoBandaRock"
+  },
+  "liveStreams": {
+    "tiktokLive": "https://tiktok.com/@bandacolapso/live",
+    "facebookLive": "",
+    "youtubeLive": "",
+    "isLiveActive": true
+  },
+  "locationUrl": "",
+  "locationName": "",
+  "tickerMessage": "🎸 ¡Bienvenidos al show de COLAPSO! Vota ahora por los temas en tiempo real.",
+  "songs": [
+    {
+      "id": "colapso-12",
+      "title": "Creep",
+      "artist": "Radiohead",
+      "albumOrYear": "",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b27302411992c50bee356ce04d68",
+      "status": "unplayed",
+      "order": 1,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-5",
+      "title": "Cuéntame",
+      "artist": "Pedro Suárez-Vértiz",
+      "albumOrYear": "",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b273f91be41045626ac811426f4c",
+      "status": "unplayed",
+      "order": 2,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-1",
+      "title": "De música ligera",
+      "artist": "Soda Stereo",
+      "albumOrYear": "",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b273c451ed28353639e79b4d97d9",
+      "status": "unplayed",
+      "order": 3,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-8",
+      "title": "Devuélveme a mi chica",
+      "artist": "Hombres G",
+      "albumOrYear": "",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b273e290a87d4f31210930579c61",
+      "status": "unplayed",
+      "order": 4,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-7",
+      "title": "El Che y los Rolling Stones",
+      "artist": "Los Rancheros",
+      "albumOrYear": "",
+      "coverUrl": "",
+      "status": "unplayed",
+      "order": 5,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-3",
+      "title": "Hombre lobo en París",
+      "artist": "La Unión",
+      "albumOrYear": "",
+      "coverUrl": "",
+      "status": "unplayed",
+      "order": 6,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-6",
+      "title": "Igual que ayer",
+      "artist": "Los Enanitos Verdes",
+      "albumOrYear": "",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b2738b8915cd0759ddff9df20888",
+      "status": "unplayed",
+      "order": 7,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-10",
+      "title": "La calle es su lugar",
+      "artist": "G.I.T.",
+      "albumOrYear": "",
+      "coverUrl": "",
+      "status": "unplayed",
+      "order": 8,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-28",
+      "title": "La guitarra",
+      "artist": "Los Auténticos Decadentes",
+      "albumOrYear": "",
+      "coverUrl": "",
+      "status": "unplayed",
+      "order": 9,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-4",
+      "title": "La muralla verde",
+      "artist": "Los Enanitos Verdes",
+      "albumOrYear": "",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b273c3d72bdf184c8ca79d8a1d0b",
+      "status": "unplayed",
+      "order": 10,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-24",
+      "title": "La universidad",
+      "artist": "Río",
+      "albumOrYear": "",
+      "coverUrl": "",
+      "status": "unplayed",
+      "order": 11,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-22",
+      "title": "Lamento boliviano",
+      "artist": "Los Enanitos Verdes",
+      "albumOrYear": "",
+      "coverUrl": "",
+      "status": "unplayed",
+      "order": 12,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-11",
+      "title": "Luna de miel",
+      "artist": "Virus",
+      "albumOrYear": "",
+      "coverUrl": "",
+      "status": "unplayed",
+      "order": 13,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-21",
+      "title": "Lunes por la madrugada",
+      "artist": "Los Abuelos de la Nada",
+      "albumOrYear": "",
+      "coverUrl": "",
+      "status": "unplayed",
+      "order": 14,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-27",
+      "title": "Magdalena",
+      "artist": "Nosequién y los Nosecuantos",
+      "albumOrYear": "",
+      "coverUrl": "",
+      "status": "unplayed",
+      "order": 15,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-17",
+      "title": "Más allá del bien y del mal",
+      "artist": "Virus",
+      "albumOrYear": "",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b27373126a5bd221c029c6798844",
+      "status": "unplayed",
+      "order": 16,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-15",
+      "title": "Mil horas",
+      "artist": "Los Abuelos de la Nada",
+      "albumOrYear": "",
+      "coverUrl": "",
+      "status": "unplayed",
+      "order": 17,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-14",
+      "title": "Mujer amante",
+      "artist": "Rata Blanca",
+      "albumOrYear": "",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b273b80d4eba7c68ee5f6bd5d907",
+      "status": "unplayed",
+      "order": 18,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-16",
+      "title": "¿Por qué no se van?",
+      "artist": "Los Prisioneros",
+      "albumOrYear": "",
+      "coverUrl": "",
+      "status": "unplayed",
+      "order": 19,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-18",
+      "title": "Sentimiento fatal",
+      "artist": "Río",
+      "albumOrYear": "",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b27373126a5bd221c029c6798844",
+      "status": "unplayed",
+      "order": 20,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-23",
+      "title": "Sexo",
+      "artist": "Los Prisioneros",
+      "albumOrYear": "",
+      "coverUrl": "",
+      "status": "unplayed",
+      "order": 21,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-20",
+      "title": "Suna",
+      "artist": "Mar de Copas",
+      "albumOrYear": "",
+      "coverUrl": "",
+      "status": "unplayed",
+      "order": 22,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-2",
+      "title": "Te vi en un tren",
+      "artist": "Los Enanitos Verdes",
+      "albumOrYear": "",
+      "coverUrl": "",
+      "status": "unplayed",
+      "order": 23,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-9",
+      "title": "Tren al Sur",
+      "artist": "Los Prisioneros",
+      "albumOrYear": "",
+      "coverUrl": "",
+      "status": "unplayed",
+      "order": 24,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-26",
+      "title": "Triciclo Perú",
+      "artist": "Los Mojarras",
+      "albumOrYear": "",
+      "coverUrl": "",
+      "status": "unplayed",
+      "order": 25,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-13",
+      "title": "Tu cárcel",
+      "artist": "Los Enanitos Verdes",
+      "albumOrYear": "",
+      "coverUrl": "",
+      "status": "unplayed",
+      "order": 26,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-19",
+      "title": "Y es que sucede así",
+      "artist": "Arena Hash",
+      "albumOrYear": "",
+      "coverUrl": "",
+      "status": "unplayed",
+      "order": 27,
+      "isCrowdRequest": false,
+      "notes": ""
+    },
+    {
+      "id": "colapso-25",
+      "title": "Ya no quiero más ska",
+      "artist": "Jas",
+      "albumOrYear": "",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b27354db9a0285f3211472d64435",
+      "status": "unplayed",
+      "order": 28,
+      "isCrowdRequest": false,
+      "notes": ""
+    }
+  ]
+}

@@ -49,6 +49,8 @@ export function useConcertSocket() {
           const msg: WebSocketServerMessage = JSON.parse(event.data);
           if (msg.type === 'INIT_STATE' || msg.type === 'STATE_UPDATE') {
             setState(msg.state);
+          } else if (msg.type === 'SUPABASE_SYNC_STATUS') {
+            setState((prev) => (prev ? { ...prev, lastSupabaseSync: msg.timestamp } : prev));
           } else if (msg.type === 'WINNER_CELEBRATION') {
             setWinnerCelebration(msg.winner);
             // Trigger confetti blast for rock concert vibe
@@ -135,6 +137,20 @@ export function useConcertSocket() {
   // Action methods
   const voteLive = useCallback(
     (songId: string) => {
+      // Optimistic update for instant responsiveness
+      setState((prev) => {
+        if (!prev) return prev;
+        const newLiveVotes = { ...(prev.liveVotes || {}) };
+        if (newLiveVotes[userId] === songId) {
+          delete newLiveVotes[userId];
+        } else {
+          newLiveVotes[userId] = songId;
+        }
+        return {
+          ...prev,
+          liveVotes: newLiveVotes,
+        };
+      });
       sendMessage({ type: 'VOTE_LIVE', songId, userId });
     },
     [sendMessage, userId]
@@ -229,6 +245,13 @@ export function useConcertSocket() {
     [sendMessage]
   );
 
+  const adminEditSong = useCallback(
+    (songId: string, title: string, artist: string, coverUrl?: string) => {
+      sendMessage({ type: 'ADMIN_EDIT_SONG', songId, title, artist, coverUrl });
+    },
+    [sendMessage]
+  );
+
   const adminRemoveSong = useCallback(
     (songId: string) => {
       sendMessage({ type: 'ADMIN_REMOVE_SONG', songId });
@@ -257,6 +280,17 @@ export function useConcertSocket() {
     [sendMessage]
   );
 
+  const adminSortSongs = useCallback(
+    (direction: 'asc' | 'desc' | 'poster' = 'asc') => {
+      sendMessage({ type: 'ADMIN_SORT_SONGS', direction });
+    },
+    [sendMessage]
+  );
+
+  const adminInvertSongsOrder = useCallback(() => {
+    sendMessage({ type: 'ADMIN_INVERT_SONGS_ORDER' });
+  }, [sendMessage]);
+
   const dismissCelebration = useCallback(() => {
     setWinnerCelebration(null);
   }, []);
@@ -282,8 +316,11 @@ export function useConcertSocket() {
       updateSocials: adminUpdateSocials,
       resetVotes: adminResetVotes,
       addSong: adminAddSong,
+      editSong: adminEditSong,
       removeSong: adminRemoveSong,
       updateSongs: adminUpdateSongs,
+      sortSongs: adminSortSongs,
+      invertSongsOrder: adminInvertSongsOrder,
       setMessage: adminSetMessage,
       simulateVotes: adminSimulateVotes,
     },

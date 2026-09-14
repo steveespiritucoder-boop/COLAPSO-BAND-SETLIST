@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import QRCode from 'qrcode';
-import { Maximize2, Minimize2, Radio, QrCode as QrIcon, Flame } from 'lucide-react';
+import { Maximize2, Minimize2, Radio, QrCode as QrIcon, Flame, Dices } from 'lucide-react';
 import { ShowState, LiveSongVoteResult, Song } from '../types';
 
 interface StageScreenProps {
@@ -44,6 +44,10 @@ export const StageScreen: React.FC<StageScreenProps> = ({
 
   const topSongs = activeSongs.slice(0, 7);
   const maxVotes = Math.max(...topSongs.map((s) => s.voteCount), 1);
+  const topVoteCount = topSongs[0]?.voteCount || 0;
+  const tiedCount = topVoteCount > 0 ? topSongs.filter((s) => s.voteCount === topVoteCount).length : 0;
+  const hasTie = tiedCount >= 2;
+  const isVotingOpen = state.votingOpen ?? true;
 
   return (
     <div className="relative min-h-[85vh] bg-black text-white rounded-3xl border border-emerald-500/30 overflow-hidden p-6 sm:p-10 flex flex-col justify-between shadow-[0_0_80px_rgba(16,185,129,0.15)]">
@@ -105,7 +109,7 @@ export const StageScreen: React.FC<StageScreenProps> = ({
               <h2 className="text-2xl sm:text-3xl font-black text-white font-rock tracking-wide m-0">
                 {currentlyPlayingSong.title}
               </h2>
-              <p className="text-sm text-zinc-400 mt-1">{currentlyPlayingSong.albumOrYear}</p>
+              <p className="text-sm text-zinc-400 mt-1">{currentlyPlayingSong.artist}</p>
 
               {/* Animated Equalizer */}
               <div className="flex items-end gap-1.5 h-10 mt-4 pt-2 border-t border-zinc-800">
@@ -156,9 +160,21 @@ export const StageScreen: React.FC<StageScreenProps> = ({
         <div className="lg:col-span-8 space-y-4">
           <div className="flex items-center justify-between px-2">
             <div>
-              <span className="text-xs font-black uppercase tracking-widest text-emerald-400 block">
-                Tendencia en Tiempo Real
-              </span>
+              <div className="flex flex-wrap items-center gap-2 mb-1">
+                <span className="text-xs font-black uppercase tracking-widest text-emerald-400 block">
+                  Tendencia en Tiempo Real
+                </span>
+                {!isVotingOpen && (
+                  <span className="px-2 py-0.5 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-[10px] font-bold font-rock uppercase">
+                    Votación en Pausa
+                  </span>
+                )}
+                {hasTie && (
+                  <span className="px-2 py-0.5 rounded-full bg-red-500/20 border border-red-400/50 text-red-300 text-[10px] font-bold font-rock uppercase flex items-center gap-1 animate-pulse">
+                    <Dices className="w-3 h-3" /> Empate ({tiedCount} temas)
+                  </span>
+                )}
+              </div>
               <h3 className="text-2xl sm:text-3xl font-black font-rock text-white tracking-wide uppercase m-0">
                 ¿Qué tema sigue después?
               </h3>
@@ -223,7 +239,7 @@ export const StageScreen: React.FC<StageScreenProps> = ({
                         >
                           {song.title}
                         </h4>
-                        <p className="text-xs text-zinc-400 truncate">{song.albumOrYear}</p>
+                        <p className="text-xs text-zinc-400 truncate">{song.artist}</p>
                       </div>
                     </div>
 

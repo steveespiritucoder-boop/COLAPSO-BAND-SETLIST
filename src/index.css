@@ -3,8 +3,10 @@
 @layer base {
   body {
     font-family: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background-color: #080a0c;
-    color: #f1f5f9;
+    background: radial-gradient(circle at 50% 0%, #1e1e24 0%, #0f0f12 35%, #050507 70%, #000000 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: #1c1917;
   }
 
   h1, h2, h3, .font-rock {
@@ -41,7 +43,7 @@
 .eq-bar-3 { animation: eqBounce 0.9s ease-in-out infinite 0.4s; }
 .eq-bar-4 { animation: eqBounce 0.7s ease-in-out infinite 0.1s; }
 
-/* Subtle stage backdrop radial glow */
+/* Subtle stage backdrop radial glow with rock crimson lights from poster */
 .stage-gradient-bg {
-  background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.12) 0%, rgba(8, 10, 12, 0.95) 70%);
+  background: radial-gradient(circle at 50% 0%, rgba(220, 38, 38, 0.22) 0%, rgba(10, 10, 12, 0.98) 75%);
 }

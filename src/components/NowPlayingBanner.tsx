@@ -16,10 +16,10 @@ export const NowPlayingBanner: React.FC<NowPlayingBannerProps> = ({
   if (!song) {
     const nextRound = upcomingRound || 1;
     return (
-      <div className="bg-white border border-slate-200 rounded-2xl p-4 text-center shadow-xs">
-        <div className="flex items-center justify-center gap-2 text-slate-600 text-sm font-semibold">
-          <Volume2 className="w-4 h-4 text-emerald-600 animate-pulse shrink-0" />
-          <span>
+      <div className="bg-[#faf6ed] border-2 border-[#e2d8c3] rounded-2xl p-4 text-center shadow-xl shadow-black/50">
+        <div className="flex items-center justify-center gap-2 text-stone-800 text-sm font-semibold">
+          <Volume2 className="w-4 h-4 text-red-600 animate-pulse shrink-0" />
+          <span className="font-medium">
             {nextRound <= 1
               ? 'La banda COLAPSO se está preparando en el escenario... ¡Vota el 1er tema abajo!'
               : `La banda finalizó el tema anterior y se prepara para el ${nextRound}º tema... ¡Vota abajo!`}
@@ -33,17 +33,17 @@ export const NowPlayingBanner: React.FC<NowPlayingBannerProps> = ({
 
   return (
     <div
-      className={`relative overflow-hidden rounded-2xl border-2 p-4 sm:p-5 shadow-sm transition-all ${
+      className={`relative overflow-hidden rounded-2xl border-2 p-4 sm:p-5 shadow-2xl transition-all ${
         isCrowd
-          ? 'bg-gradient-to-r from-amber-50 via-white to-orange-50 border-amber-400'
-          : 'bg-gradient-to-r from-emerald-50 via-white to-teal-50 border-emerald-500'
+          ? 'bg-[#faf6ed] border-amber-500 shadow-amber-950/20'
+          : 'bg-[#faf6ed] border-red-600 shadow-red-950/20'
       }`}
     >
       <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         {/* Left: Album cover + Equalizer + Title/Artist */}
         <div className="flex items-center gap-3.5 min-w-0">
           {/* Cover / Vinyl graphic */}
-          <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden shrink-0 shadow-sm border border-slate-200">
+          <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden shrink-0 shadow-md border-2 border-red-600/70">
             {song.coverUrl ? (
               <img
                 src={song.coverUrl}
@@ -51,15 +51,15 @@ export const NowPlayingBanner: React.FC<NowPlayingBannerProps> = ({
                 className="w-full h-full object-cover"
               />
             ) : (
-              <div className="w-full h-full bg-slate-900 flex items-center justify-center text-white">
-                <Disc className="w-6 h-6 animate-spin text-emerald-400" />
+              <div className="w-full h-full bg-stone-900 flex items-center justify-center text-white">
+                <Disc className="w-6 h-6 animate-spin text-red-500" />
               </div>
             )}
             {/* Overlay mini equalizer */}
-            <div className="absolute inset-0 bg-black/40 flex items-center justify-center gap-1">
-              <span className="w-1 bg-white rounded-full eq-bar-1" />
+            <div className="absolute inset-0 bg-black/30 flex items-center justify-center gap-1">
+              <span className="w-1 bg-red-500 rounded-full eq-bar-1" />
               <span className="w-1 bg-white rounded-full eq-bar-2" />
-              <span className="w-1 bg-white rounded-full eq-bar-3" />
+              <span className="w-1 bg-red-500 rounded-full eq-bar-3" />
               <span className="w-1 bg-white rounded-full eq-bar-4" />
             </div>
           </div>
@@ -67,29 +67,29 @@ export const NowPlayingBanner: React.FC<NowPlayingBannerProps> = ({
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2 mb-1">
               {isCrowd ? (
-                <span className="inline-flex items-center gap-1 text-[11px] font-black text-amber-900 bg-amber-200 border border-amber-400 px-2 py-0.5 rounded uppercase tracking-wider shadow-xs animate-pulse">
-                  <Flame className="w-3.5 h-3.5 text-amber-700 fill-amber-700" />
+                <span className="inline-flex items-center gap-1 text-[11px] font-black text-amber-950 bg-amber-300 border border-amber-500 px-2 py-0.5 rounded uppercase tracking-wider shadow-xs animate-pulse font-rock">
+                  <Flame className="w-3.5 h-3.5 text-amber-900 fill-amber-900" />
                   PEDIDO DE PÚBLICO
                 </span>
               ) : (
-                <span className="inline-flex items-center gap-1 text-[11px] font-black text-emerald-900 bg-emerald-200 border border-emerald-400 px-2 py-0.5 rounded uppercase tracking-wider shadow-xs">
-                  <Music className="w-3.5 h-3.5 text-emerald-800" />
+                <span className="inline-flex items-center gap-1 text-[11px] font-black text-white bg-red-600 border border-red-700 px-2 py-0.5 rounded uppercase tracking-wider shadow-xs font-rock">
+                  <Music className="w-3.5 h-3.5 text-white" />
                   SONANDO EN VIVO AHORA
                 </span>
               )}
 
               {roundNumber && (
-                <span className="text-[11px] font-bold text-slate-500 bg-white/80 px-2 py-0.5 rounded border border-slate-200">
+                <span className="text-[11px] font-bold text-stone-700 bg-[#ebe3cf] px-2 py-0.5 rounded border border-[#ded5be] font-rock">
                   Tema #{roundNumber}
                 </span>
               )}
             </div>
 
-            <h2 className="text-xl sm:text-2xl font-black text-slate-950 font-rock tracking-wider uppercase m-0 truncate">
+            <h2 className="text-xl sm:text-2xl font-black text-stone-950 font-rock tracking-wider uppercase m-0 truncate">
               {song.title}
             </h2>
 
-            <p className="text-xs sm:text-sm font-bold uppercase tracking-wide italic text-cyan-800 mt-0.5 truncate">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-wide text-red-700 mt-0.5 truncate font-rock">
               {song.artist}
             </p>
           </div>
@@ -98,13 +98,13 @@ export const NowPlayingBanner: React.FC<NowPlayingBannerProps> = ({
         {/* Right: Badge */}
         <div className="self-end sm:self-auto shrink-0">
           <div
-            className={`px-3 py-1.5 rounded-xl border text-xs font-bold flex items-center gap-1.5 shadow-2xs ${
+            className={`px-3 py-1.5 rounded-xl border text-xs font-bold flex items-center gap-1.5 shadow-xs font-rock ${
               isCrowd
                 ? 'bg-amber-100 text-amber-900 border-amber-300'
-                : 'bg-white text-emerald-800 border-emerald-300'
+                : 'bg-stone-950 text-white border-stone-800'
             }`}
           >
-            <Sparkles className={`w-3.5 h-3.5 ${isCrowd ? 'text-amber-600' : 'text-emerald-600'}`} />
+            <Sparkles className={`w-3.5 h-3.5 ${isCrowd ? 'text-amber-600' : 'text-red-500'}`} />
             <span>{isCrowd ? '¡Elegida a viva voz!' : 'Ganadora de la Votación'}</span>
           </div>
         </div>

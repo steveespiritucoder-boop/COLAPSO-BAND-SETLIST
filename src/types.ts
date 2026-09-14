@@ -54,6 +54,8 @@ export interface SocialLinks {
   tiktok: string;
   facebook: string;
   youtube: string;
+  whatsapp?: string;
+  phone?: string;
 }
 
 export interface LiveStreams {
@@ -88,6 +90,7 @@ export interface ShowState {
   locationUrl?: string;
   locationName?: string;
   attendances?: Record<string, AttendanceType>; // userId -> in_person | virtual
+  lastSupabaseSync?: number;
 }
 
 export type WebSocketClientMessage =
@@ -105,14 +108,18 @@ export type WebSocketClientMessage =
   | { type: 'ADMIN_UPDATE_STREAMS'; liveStreams: LiveStreams }
   | { type: 'ADMIN_UPDATE_SOCIALS'; socialLinks: SocialLinks }
   | { type: 'ADMIN_RESET_VOTES' }
-  | { type: 'ADMIN_ADD_SONG'; title: string; artist: string; albumOrYear: string; coverUrl?: string; tempo?: string }
+  | { type: 'ADMIN_ADD_SONG'; title: string; artist: string; albumOrYear?: string; coverUrl?: string; tempo?: string }
+  | { type: 'ADMIN_EDIT_SONG'; songId: string; title: string; artist: string; coverUrl?: string }
   | { type: 'ADMIN_REMOVE_SONG'; songId: string }
   | { type: 'ADMIN_SET_MESSAGE'; message: string }
   | { type: 'ADMIN_SIMULATE_VOTES'; count: number }
-  | { type: 'ADMIN_UPDATE_SONGS'; songs: Song[] };
+  | { type: 'ADMIN_UPDATE_SONGS'; songs: Song[] }
+  | { type: 'ADMIN_SORT_SONGS'; direction: 'asc' | 'desc' | 'poster' }
+  | { type: 'ADMIN_INVERT_SONGS_ORDER' };
 
 export type WebSocketServerMessage =
   | { type: 'INIT_STATE'; state: ShowState; yourUserId: string }
   | { type: 'STATE_UPDATE'; state: ShowState }
-  | { type: 'WINNER_CELEBRATION'; winner: WinnerAnnouncement };
+  | { type: 'WINNER_CELEBRATION'; winner: WinnerAnnouncement }
+  | { type: 'SUPABASE_SYNC_STATUS'; success: boolean; timestamp: number };
 
